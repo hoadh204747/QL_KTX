@@ -1,0 +1,29 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+    <div class="title-news">
+        <h1><%= news.title %></h1>
+    </div>
+
+    <div class="main-news">
+        <div class="main-news-left">
+            <div class="time"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold;"><%= news.date_created.toDateString() %></span></div>
+            <div class="content"><p><%= news.content %></p></div>
+        </div>
+        <div class="main-news-rigth">
+            <form action="" method="POST" role="search">
+                <input type="search" name="search" placeholder="Tìm kiếm...">
+            </form>
+            <div style="margin-top: 15px;">
+                <h2>Bài viết mới</h2>
+            </div>
+            <div>
+                <ul>
+                    <% post.forEach(n => { %>
+                        <li><a href="/detail-news/<%= n._id %>"><span><%= n.title %></span></a></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>

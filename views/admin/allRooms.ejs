@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav-admin.ejs') %>
+
+<main>
+    <div class="xx">
+        <div>
+            <h1>Danh sách phòng</h1>
+        </div>
+    </div>
+
+    <div class="table-room">
+        <table style="width: 100%;">
+            <tr>
+                <th>Phòng</th>
+                <th>Giá</th>
+                <th>Giới tính</th>
+                <th>Hiện có</th>
+                <th>Max</th>
+                <th>Tình trạng</th>
+                <th></th>
+            </tr>
+            <% rooms.forEach(function(room) { %>
+                <tr>
+                    <td><%= room.name %></td>
+                    <td><%= room.price %>k</td>
+                    <td><%= room.gender %></td>
+                    <td></td>
+                    <td><%= room.countMax %></td>
+                    <td></td>
+                    <td>
+                        <td><a href="/edit/room/<%= room._id %>" ><button>Sửa</button></a></td>
+                        <td><form action="/room/<%= room._id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Xóa"/>
+                        </form></td>
+                    </td>
+                </tr>
+            <% }) %>
+            
+        </table>
+    </div>
+</main>
+ 
+<%- include('../partials/footer.ejs') %>

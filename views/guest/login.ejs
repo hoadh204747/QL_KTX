@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form Đăng Nhập</title>
+</head>
+<body class="x">
+    <div class="container">
+        <form action="/login" method="POST">
+            <h2>Đăng Nhập</h2>
+            <label for="username">Email đăng nhập</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Đăng Nhập</button>
+            <p class="forgot-password"><a href="#">Quên mật khẩu</a></p>
+        </form>
+        <p class="create-account">Chưa có tài khoản? <a href="register">Tạo tài khoản</a></p>
+    </div>
+</body>
+</html>

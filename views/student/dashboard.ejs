@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+    <main>
+        <div class="header-dashboard xx">
+            <div>
+                <h1>Bảng điều khiển tài khoản sinh viên</h1>
+            </div>
+        </div>
+
+        <div class="main-home">
+            <div class="event">
+                <ul>
+                    <% news.forEach(n => { %>
+                        <li><a href="/detail-news/<%= n._id %>"><%= n.title %></a></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="thong-ke">
+                <div class="box" style="background-color: rgb(200, 100, 162); border-radius: 5px;">
+                    <h1><span><%= user %></span></h1>
+                    <p><span>Tổng số tài khoản sinh viên</span></p>
+                </div>
+                <div class="box" style="background-color: darkturquoise; border-radius: 5px;">
+                    <h1><span><%= manager %></span></h1>
+                    <p><span>Tổng số tài khoản cán bộ</span></p>
+                </div>
+                <div class="box" style="background-color: coral; border-radius: 5px;"></div>
+            </div>
+        </div>
+    </main>
+
+<%- include('../partials/footer.ejs') %>

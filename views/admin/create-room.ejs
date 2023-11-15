@@ -1,0 +1,20 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav-admin.ejs') %>
+
+<main>
+    <form action="/admin/create-room" method="POST">
+        <h2>Tạo phòng</h2>
+        <label for="name">Tên phòng</label>
+        <input type="text" id="name" name="name" required>
+        <label for="price">Giá tiền 1 tháng</label>
+        <input type="text" id="price" name="price" required>
+        <label for="countMax">Số sinh viên tối đa</label>
+        <input type="text" id="countMax" name="countMax" required>
+        <label for="gender">Giới tính</label>
+        <input type="text" id="gender" name="gender" required>
+        <button type="submit">Tạo</button>
+
+    </form>
+</main>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav-admin.ejs') %>
+
+<h1>Chỉnh sửa bài đăng</h1>
+
+<form action="/edit-news/<%= news._id %>?_method=PUT" method="POST">
+
+    <label for="title"><b>Tiêu đề</b></label>
+    <input type="text" placeholder="Nhập tiêu đề" name="title">
+  
+    <label for="content"><b>Nội dung</b></label>
+    <textarea id="content" name="content" cols="50" rows="10"></textarea>
+  
+    <button type="submit">Cập nhật</button>
+  
+</form>
+
+<%- include('../partials/footer.ejs') %>
