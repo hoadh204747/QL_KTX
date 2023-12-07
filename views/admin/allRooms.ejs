@@ -17,7 +17,6 @@
                 <th>Hiện có</th>
                 <th>Max</th>
                 <th>Tình trạng</th>
-                <th></th>
             </tr>
             <% rooms.forEach(function(room) { %>
                 <tr>
@@ -26,11 +25,10 @@
                     <td><%= room.gender %></td>
                     <td></td>
                     <td><%= room.countMax %></td>
-                    <td></td>
                     <td>
-                        <td><a href="/edit/room/<%= room._id %>" ><button>Sửa</button></a></td>
+                        <td><a href="/edit/room/<%= room._id %>" ><button style="padding: 5px; border: none; background-color: rgb(80, 255, 144); border-radius: 5px;">Sửa</button></a></td>
                         <td><form action="/room/<%= room._id %>?_method=DELETE" method="POST">
-                            <input type="submit" value="Xóa"/>
+                            <input style="padding: 5px; border: none; background-color: rgb(255, 238, 80); border-radius: 5px;" type="submit" value="Xóa"/>
                         </form></td>
                     </td>
                 </tr>

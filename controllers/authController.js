@@ -14,7 +14,6 @@ const createToken = (id) => {
 
 //
 function home(req, res){
-        req.session.authorized = true;
         res.render('guest/home')
 }
 
@@ -82,5 +81,6 @@ async function postLogin(req, res, next){
         })
         .catch(next)
     }
+    
 
 module.exports = {home, getLogin, postLogin, getRegister, postRegister, postLogout}

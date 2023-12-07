@@ -2,19 +2,17 @@
 <%- include('../partials/nav-admin.ejs') %>
 
 <main>
-    <form action="/admin/create-room" method="POST">
-        <h2>Tạo phòng</h2>
-        <label for="name">Tên phòng</label>
-        <input type="text" id="name" name="name" required>
-        <label for="price">Giá tiền 1 tháng</label>
-        <input type="text" id="price" name="price" required>
-        <label for="countMax">Số sinh viên tối đa</label>
-        <input type="text" id="countMax" name="countMax" required>
-        <label for="gender">Giới tính</label>
-        <input type="text" id="gender" name="gender" required>
-        <button type="submit">Tạo</button>
-
-    </form>
+    <div class="form-wrapper">
+        <h1>Tạo phòng</h1>
+        <form action="/admin/create-room" method="POST">
+            <input type="text" id="name" name="name" placeholder="Tên phòng" required>
+            <input type="text" id="price" name="price" placeholder="Giá tiền" required>
+            <input type="text" id="countMax" name="countMax" placeholder="Số lượng sinh viên tối đa có thể đăng ký" required>
+            <input type="text" id="gender" name="gender" placeholder="Giới tính" required>
+            <button type="submit">Tạo</button>
+    
+        </form>
+    </div>
 </main>
 
 <%- include('../partials/footer.ejs') %>

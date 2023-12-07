@@ -1,5 +1,6 @@
 const Room = require('../models/roomModel')
 const News = require('../models/newsModel')
+const User = require('../models/userModel')
 
 class AdminController {
 
@@ -63,6 +64,20 @@ class AdminController {
     async deteleNews(req,res){
         await News.deleteOne({_id:req.params.id})
         res.redirect('/admin/list-news')
+    }
+
+    async addStudent_toRRoom(req,res){
+        const studentId = req.body.id;
+        User.findById(studentId)
+            .then((user) => {
+                return req.room.addStudent(user)
+            })
+            .then((result) => {
+                req.session.room = req.room;
+                return req.session.save(() => {
+                    res.redirect('/rooms')
+                })
+            })
     }
 
 }

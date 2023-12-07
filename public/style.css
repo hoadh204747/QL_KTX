@@ -41,13 +41,19 @@ li{
     display: none;
 }
 
-.navbar .list-menu ul li:hover ul.dropdown{
+.navbar  ul li:hover ul.dropdown{
     display: block;
     background-color: #c02f2f;
 }
 
 .icon-name{
     text-align: center;
+}
+.icon-name ul.dropdown{
+    display: none;
+}
+.icon-name ul.dropdown li{
+    display: block;
 }
 
 .fa-user{
@@ -66,10 +72,11 @@ li{
 }
 
 /* nav-admin */
-.navbar-admin .list-menu ul li:hover ul.dropdown{
+.navbar-admin  ul li:hover ul.dropdown{
     display: block;
     background-color: #0056b3;
 }
+
 
 .navbar-admin .list-menu a:hover{
     color: #e2ae1f;
@@ -100,138 +107,97 @@ li{
     text-decoration: none;
 }
 
-.btn-logout{
-    color: white; 
-    background-color: brown; 
-    border: none; 
-    scale: 1.1;
-}
-.btn-logout:hover{
-    scale: 1.3;
-    color: #007BFF;
-    cursor: pointer;
-}
 
-/* login-form */
-/* .x {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
 
-.container {
-    background: #f1f1f1;
+/* register-form */
+.wrapper{
+    width: 320px;
+    padding: 2rem 1rem;
+    margin: 200px auto;
+    background-color: azure;
     border-radius: 10px;
-    padding: 20px;
-    width: 300px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 35px rgb(255, 102, 0);
 }
-
-form {
-    display: flex;
-    flex-direction: column;
+.wrapper h1{
+    color: black;
+    margin-bottom: 30px;
 }
-
-h2 {
-    margin: 0 0 20px;
+.wrapper form input{
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    background: #ccc;
 }
-
-label {
-    text-align: left;
-    margin: 10px 0;
-}
-
-input {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background: #007BFF;
-    color: #fff;
+.wrapper form button{
+    width: 90%;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-radius: 20px;
+    outline: none;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 1.8 rem;
+    background-color: #007BFF;
+    color: #fff;
+}
+.wrapper form button:hover{
     cursor: pointer;
+    color: #c02f2f;
+    transform: scale(1.1);
+    background-color: aquamarine;
+}
+.wrapper .member{
+    margin-top: 20px;
+    font-size: larger;
+}
+.wrapper .member a{
+    font-style: italic;
+    color: #c02f2f;
 }
 
-button:hover {
-    background: #0056b3;
-}
-
-.forgot-password,
-.create-account {
-    margin-top: 10px;
-}
-
-.create-account a,
-.forgot-password a {
-    text-decoration: none;
-    color: #007BFF;
-}
-
-.create-account a:hover,
-.forgot-password a:hover {
-    text-decoration: underline;
-} */
-
-/* register */
-/* .x{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
-    background: #f1f1f1;
+/* form create-edit room */
+.form-wrapper{
+    width: 500px;
+    padding: 2rem 1rem;
+    margin: 20px auto;
+    
     border-radius: 10px;
-    padding: 20px;
-    width: 300px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-form {
-    display: flex;
-    flex-direction: column;
+.form-wrapper h1{
+    margin-bottom: 20px;
 }
-
-h2 {
-    margin: 0 0 20px;
+.form-wrapper input{
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    outline: none;
+    background: #ccc;
 }
-
-label {
-    text-align: left;
-    margin: 10px 0;
-}
-
-input {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background: #007BFF;
-    color: #fff;
+.form-wrapper button{
+    width: 20%;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-radius: 20px;
+    outline: none;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    font-size: 1.8 rem;
+    background-color: #007BFF;
+    color: #fff;
 }
-
-button:hover {
-    background: #0056b3;
-} */
-
+.form-wrapper button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.form-wrapper label{
+    margin-top: 25px;
+    display: block;
+}
 
 
 /* footer */
@@ -326,12 +292,14 @@ button:hover {
 .table-room{
     display: flex;
     position: relative;
-    width: 100%;
+    width: 90%;
     height: auto;
+    margin: auto;
 }
 
 table, th, td {
     border:1px solid black;
+    padding: 10px;
 }
 
 

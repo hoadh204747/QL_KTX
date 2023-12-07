@@ -22,4 +22,6 @@ router.get('/edit-news/:id', adminController.getUpdateNews)
 router.put('/edit-news/:id', adminController.updateNews)
 router.delete('/admin/list-news/:id', adminController.deteleNews)
 
+router.post('/add-student-to-room', adminController.addStudent_toRRoom)
+
 module.exports = router;
