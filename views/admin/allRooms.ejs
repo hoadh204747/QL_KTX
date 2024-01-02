@@ -1,41 +1,57 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/nav-admin.ejs') %>
 
-<main>
-    <div class="xx">
-        <div>
-            <h1>Danh sách phòng</h1>
-        </div>
-    </div>
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
 
-    <div class="table-room">
-        <table style="width: 100%;">
-            <tr>
-                <th>Phòng</th>
-                <th>Giá</th>
-                <th>Giới tính</th>
-                <th>Hiện có</th>
-                <th>Max</th>
-                <th>Tình trạng</th>
-            </tr>
-            <% rooms.forEach(function(room) { %>
-                <tr>
-                    <td><%= room.name %></td>
-                    <td><%= room.price %>k</td>
-                    <td><%= room.gender %></td>
-                    <td></td>
-                    <td><%= room.countMax %></td>
-                    <td>
-                        <td><a href="/edit/room/<%= room._id %>" ><button style="padding: 5px; border: none; background-color: rgb(80, 255, 144); border-radius: 5px;">Sửa</button></a></td>
-                        <td><form action="/room/<%= room._id %>?_method=DELETE" method="POST">
-                            <input style="padding: 5px; border: none; background-color: rgb(255, 238, 80); border-radius: 5px;" type="submit" value="Xóa"/>
-                        </form></td>
-                    </td>
-                </tr>
-            <% }) %>
-            
-        </table>
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="xx">
+                <div>
+                    <h2>Danh sách phòng</h2>
+                </div>
+                <input type="text" id="search" placeholder="Search">
+            </div>
+        
+            <div id="table" class="table-room">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Phòng</th>
+                        <th>Giá(VND/month)</th>
+                        <th>Giới tính</th>
+                        <th>Hiện có</th>
+                        <th>Max</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                    <% rooms.forEach(function(room) { %>
+                        <tr>
+                            <td><a style="color: blue;" href="/room/<%= room._id %>"><%= room.name %></a></td>
+                            <td><%= room.price %></td>
+                            <td><%= room.gender %></td>
+                            <td><%= room.curr_count %></td>
+                            <td><%= room.countMax %></td>
+                            <td>
+                                <% if(room.curr_count < room.countMax){ %>
+                                    Còn chỗ
+                                <%} else{ %>
+                                    Đã đầy
+                                <%} %>
+                            </td>
+                            
+                                <td><a href="/edit/room/<%= room._id %>" ><button style="padding: 5px; border: none; background-color: rgb(80, 255, 144); border-radius: 5px;">Sửa</button></a></td>
+                                <td><form action="/room/<%= room._id %>?_method=DELETE" method="POST">
+                                    <input style="padding: 5px; border: none; background-color: rgb(255, 238, 80); border-radius: 5px;" type="submit" value="Xóa"/>
+                                </form></td>
+                            
+                        </tr>
+                    <% }) %>
+                    
+                </table>
+            </div>
+        </main>
     </div>
-</main>
- 
+</div>
+
+
 <%- include('../partials/footer.ejs') %>

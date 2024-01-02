@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const isAuthAdmin = require('../middlewares/is-auth-admin')
 
-router.get('/', authController.home)
+
 
 router.post('/', authController.postLogout)
 

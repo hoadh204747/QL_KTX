@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+    <h2>Hóa đơn điện</h2>
+    <table style="width: 100%;">
+        <tr>
+            <th>Phòng</th>
+            <th>Năm</th>
+            <th>Tháng</th>
+            <th>Số điện cũ(kW/h)</th>
+            <th>Số điện mới(kW/h)</th>
+            <th>Đã sư dụng(kW/h)</th>
+            <th>Đơn giá (VND)</th>
+            <th>Thành tiền(VND)</th>
+        </tr>
+        <% bill.id_phong.listBill.forEach(b => { %>
+            <tr>
+                <td><%= bill.id_phong.name %></td>\
+                <td><%= b.idBill.year %></td>
+                <td><%= b.idBill.month %></td>
+                <td><%= b.idBill.old_electric %></td>
+                <td><%= b.idBill.new_electric %></td>
+                <td><%= b.idBill.new_electric - b.idBill.old_electric %></td>
+                <td><%= b.idBill.price_dien %></td>
+                <td><%= (b.idBill.new_electric - b.idBill.old_electric)*1500 %></td>
+                
+            </tr>
+        <% }) %>
+        
+    </table>
+    <h2>Hóa đơn nước</h2>
+    <table style="width: 100%;">
+        <tr>
+            <th>Phòng</th>
+            <th>Năm</th>
+            <th>Tháng</th>
+            <th>Số nước cũ(m3)</th>
+            <th>Số nước mới(m3)</th>
+            <th>Đã sư dụng(m3)</th>
+            <th>Đơn giá (VND/m3)</th>
+            <th>Thành tiền(VND)</th>
+        </tr>
+        <% bill.id_phong.listBill.forEach(b => { %>
+            <tr>
+                <td><%= bill.id_phong.name %></td>\
+                <td><%= b.idBill.year %></td>
+                <td><%= b.idBill.month %></td>
+                <td><%= b.idBill.old_water %></td>
+                <td><%= b.idBill.new_water %></td>
+                <td><%= b.idBill.new_water - b.idBill.old_water %></td>
+                <td><%= b.idBill.price_nuoc %></td>
+                <td><%= (b.idBill.new_water - b.idBill.old_water)*30000 %></td>
+            </tr>
+        <% }) %>
+        
+    </table>
+</main>
+
+<%- include('../partials/footer.ejs') %>

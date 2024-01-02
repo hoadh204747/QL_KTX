@@ -1,0 +1,44 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <% rooms.forEach(room => { %>
+              <div>
+                  <h2 class="title is-4"><%= room.name %></h2>
+                  <form action="/create-bill" method="POST">
+                      <input type="hidden" name="idRoom" id="idRoom" value="<%= room._id %>">
+                      <div class="row">
+                          <div class="col">
+                              <input type="number" class="form-control" placeholder="Tháng" name="month">
+                            </div>
+                            <div class="col">
+                              <input type="number" class="form-control" placeholder="Năm" name="year">
+                            </div>
+                            <div class="col">
+                              <input type="number" class="form-control" placeholder="Số điện cũ" name="old_electric">
+                            </div>
+                            <div class="col">
+                              <input type="number" class="form-control" placeholder="Số nước cũ" name="old_water">
+                            </div>
+                            <div class="col">
+                              <input type="number" class="form-control" placeholder="Số điện mới" name="new_electric">
+                            </div>
+                            <div class="col">
+                              <input type="number" class="form-control" placeholder="Số nước mới" name="new_water">
+                            </div>
+                      </div>
+                      <button style="padding: 5px; border: none; background-color: rgb(80, 255, 144); border-radius: 5px; width: 100px;" type="submit">Gửi</button>
+                  </form>
+              </div>
+          <% }) %>
+        </main>
+    </div>
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

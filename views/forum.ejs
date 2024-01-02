@@ -1,0 +1,63 @@
+<%- include('./partials/header.ejs') %>
+
+<main style="background-color: black;">
+    <div class="row">
+        <div class="col-sm-3 text-white">
+            <img width="100%" src="/images/forum.png" alt="">
+        </div>
+        <div class="col-sm-6 p-4 text-white text-center align-items-center bg-secondary ">
+            <h2>DIỄN ĐÀN KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA HÀ NỘI</h2>
+            <h4>Nơi tiếp nhận chia sẻ,đóng góp, phản hồi từ các bạn sinh viên</h4>
+            <h5 style="color: aquamarine;">Liên hệ chúng tôi qua hòm thư để được hỗ trợ</h5>
+            <i class="fa-solid fa-envelope text-dark"></i>
+            <span style="color: rgb(133, 231, 138);">ttqlktxhust@gmail.com</span>
+        </div>
+        <div class="col-sm-3 text-white">
+            <img width="100%" src="/images/forum.png" alt="">
+        </div>
+      </div>
+    <div class="forum-container">
+
+        <div class="cmt-container">
+
+            <div class="form-cmt">
+                <form action="/forum" method="POST">
+                    <label for="topic">Chọn chủ đề muốn phản ánh:</label>
+                    <select name="topic" id="topic" required>
+                        <option value="Điện, nước, vệ sinh">Điện, nước, vệ sinh</option>
+                        <option value="Trật tự an ninh">Trật tự an ninh</option>
+                        <option value="Dịch vụ khác">Dịch vụ khác</option>
+                    </select>
+                    <input style="width: 100%; padding: 20px;" type="text" name="comment" placeholder="Viết bình luận..." required>
+                    <button style="background-color: dodgerblue; color: aliceblue;" type="submit">Đăng</button>
+                </form>
+            </div>
+
+            <% ratings.forEach(r => { %>
+                <div class="user-cmt">
+                    <div class="avt-cmt">
+                        <img width="100%" src="/images/user.png" alt="">
+                    </div>
+                    <div class="text-cmt">
+                        <b style="color: blue;"><%= r.user.fullname %></b>
+                        <p style="font-style: initial; font-size: 1.15rem;"><%= r.comment %></p>
+                        <p style="font-size: 0.8rem;"><%= r.createdAt.toDateString() %></p>
+                        <b style="font-size: 0.9rem;">#<%=r.topic %></b>
+                    </div>
+                    <% if(user.role === "admin"){ %>
+                        <div>
+                            <form action="/forum/<%= r._id %>?_method=DELETE" method="POST">
+                                <!-- <input type="hidden" name="idCmt" value="<%= r._id %>"> -->
+                                <button type="submit"> Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+            
+            
+        </div>
+    </div>
+</main>
+
+<%- include('./partials/footer.ejs') %>

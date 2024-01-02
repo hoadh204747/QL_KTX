@@ -1,46 +1,84 @@
-<nav class="navbar-admin">
-
-    <div class="list-menu">
-      <ul>
-        <li><a href="#">Trang chủ</a></li>
-
-        <li>
-          <a href="#">Quản lý đăng ký</a>
-          <ul class="dropdown">
-            <li><a href="#">Yêu cầu đăng ký phòng</a></li>
-            <li><a href="#">Yêu cầu trả phòng</a></li>
-          </ul>
-        </li>
-
-        <li>
-            <a href="#">Quản lý phòng</a>
-            <ul class="dropdown">
-              <li><a href="/rooms">Danh sách phòng</a></li>
-              <li><a href="/admin/create-room">Tạo thêm phòng</a></li>
-            </ul>
-        </li>
-        <li><a href="/post-news">Đăng bài thông báo</a></li>
-        <li><a href="#">Cán bộ</a></li>
-        <li><a href="#">Hóa đơn</a></li>
-
+<div id="sidebar">
+  <div class="h-100">
+      <div class="sidebar-logo">
+          <span>Quản lý KTX HUST</span>
+      </div>
+      <ul class="sidebar-nav">
+          <li class="sidebar-header">
+              Bảng điều khiển
+          </li>
+          <li class="sidebar-item">
+              <a href="/admin/dashboard" class="sidebar-link">
+                  <i class="fa-solid fa-house pe-2"></i>
+                  Trang chủ
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="/xac-nhan-dang-ky" class="sidebar-link">
+                  <i class="fa-solid fa-bell pe-2"></i>
+                  Yêu cầu đăng ký phòng
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="" class="sidebar-link collapsed" data-bs-target="#rooms" data-bs-toggle="collapse" aria-expanded="false">
+                  <i class="fa-solid fa-bars-progress pe-2"></i>
+                  Quản lý phòng
+              </a>
+              <ul id="rooms" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a href="/rooms" class="sidebar-link">
+                          Danh sách phòng
+                      </a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a href="/admin/create-room" class="sidebar-link">
+                          Tạo thêm phòng
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li class="sidebar-item">
+              <a href="" class="sidebar-link collapsed" data-bs-target="#post" data-bs-toggle="collapse" aria-expanded="false">
+                  <i class="fa-solid fa-newspaper pe-2"></i>
+                  Quản lý bài đăng
+              </a>
+              <ul id="post" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a href="/admin/list-news" class="sidebar-link">
+                          Danh sách bài đăng
+                      </a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a href="/post-news" class="sidebar-link">
+                          Tạo bài đăng mới
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li class="sidebar-item">
+              <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
+                  <i class="fa-solid fa-money-bill-trend-up pe-2"></i>
+                  Hóa đơn
+              </a>
+              <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a href="/create-bill" class="sidebar-link">
+                          Gửi hóa đơn
+                      </a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a href="/thongke-bill" class="sidebar-link">
+                          Thống kê hóa đơn
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li class="sidebar-item">
+              <a target="_blank" href="/forum" class="sidebar-link">
+                  <i class="fa-regular fa-comment-dots pe-2"></i>
+                  Diễn đàn
+              </a>
+          </li>
       </ul>
-    </div>
-
-    <div class="icon-name">
-      
-      <ul>
-        <li>
-          <i class="fas fa-user"></i>
-          <ul class="dropdown">
-            <li><a style="color: #fff;" href="">Thông tin cá nhân</a></li>
-            <li><form action="/" method="POST">
-              <button type="submit">Logout</button>
-            </form></li>
-          </ul>
-        </li>
-      </ul>
-
-      
-    </div> 
-    
-</nav>
+  </div>
+</div>

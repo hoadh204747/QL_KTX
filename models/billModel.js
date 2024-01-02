@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const billSchema = new Schema({
-    id_room: {type: Schema.Types.ObjectId, ref:"Room"},
-    ngay_thu:{type: Date},
-    money:{type:Number, require: true},
-    month: {type: Number},
-    year: {type: Number},
-    warter_consume: {type: Number, require: true},
-    electric_consume: {type: Number, require: true}
+    month:Number,
+    year: Number,
+    old_electric: Number,
+    new_electric: Number,
+    old_water: Number,
+    new_water: Number,
+    price_dien: {type: Number, default: 1500},
+    price_nuoc: {type: Number, default: 30000},
+    money: {type:Number, default: 0}
 })
 
 module.exports = mongoose.model("Bill", billSchema);

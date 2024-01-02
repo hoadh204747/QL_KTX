@@ -1,6 +1,59 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/nav-admin.ejs') %>
 
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
 
+        <main  class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div style="display: flex; justify-content: space-around;">
+                <div id="pie" style="width:100%;max-width:500px;"></div>
+                <div id="bar" style="width:100%;max-width:500px;"></div>
+            </div>
+            <div class="d-flex justify-content-around p-2  mb-3 mt-5">
+                <div style="box-shadow: 5px 10px 18px rgb(60, 82, 193); border: 0px solid;" class="p-5 bg-info"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= sv %> Sinh viên</span></div>
+                <div style="box-shadow: 5px 10px 18px rgb(211, 133, 73); border: 0px solid;" class="p-5 bg-warning"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= ad %> Cán bộ</span></div>
+                <div style="box-shadow: 5px 10px 18px rgb(166, 90, 213); border: 0px solid;" class="p-5 bg-primary"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= r %> Phòng</span></div>
+              </div>
+            
+        </main>
+    </div>
+</div>
+
+<script>
+    const xArray = ["Empty-slot", "Current-slot"];
+    const yArray = ['<%-a%>', '<%-b%>']
+    const aArray = ["Điện, nước, vệ sinh", "Trật tự an ninh", 'Dịch vụ khác'];
+    const bArray = ['<%-c%>', '<%-d%>', '<%-e%>']
+    
+    const layout1 = {title:"Tỷ lệ đăng ký phòng", paper_bgcolor: "#ccc"};
+    
+    const data1 = [{labels:xArray, values:yArray, type:"pie"}];
+    const layout2 = {
+        title:"Phản hôì về các loại dịch vụ", 
+        paper_bgcolor: "#ccc",
+        plot_bgcolor: "#ccc",
+        yaxis: {
+        tickvals: [2, 4, 6, 8],  // Vị trí của các đơn vị trên trục y
+        ticktext: ["2", "4", "6", "8"]  // Nhãn tương ứng với các đơn vị
+  }
+    };
+    
+    const data2 = [{
+        x:aArray,
+        y:bArray,
+        type:"bar",
+        orientation:"v",
+        marker: {color:"rgba(0,0,255,0.6)"}
+    }];
+    
+    Plotly.newPlot("pie", data1, layout1);
+    Plotly.newPlot("bar", data2, layout2);
+</script>
+
+<script>
+    window.alert('<%= message %>')
+</script>
 
 <%- include('../partials/footer.ejs') %>

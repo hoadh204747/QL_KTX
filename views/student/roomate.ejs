@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+
+    <% if(!room) { %>
+        <div class="xx">
+            <div>
+                <h1>Chưa đăng ký phòng nào</h1>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="xx">
+            <div>
+                <h1>Danh sách sinh viên phòng <%= room.name %></h1>
+            </div>
+        </div>
+        <div class="table-room">
+            <table style="width: 100%;">
+                <tr>
+                    <th>Họ tên</th>
+                    <th>MSSV</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                </tr>
+                <% student.forEach(function(stu) { %>
+                    <tr>
+                        <td><%= stu.fullname %></td>
+                        <td><%= stu.mssv %></td>
+                        <td><%= stu.phone %></td>
+                        <td><%= stu.email %></td>
+                    </tr>
+                <% } ) %>
+            </table>
+        </div>
+    <% } %>
+
+    
+</main>
+
+<%- include('../partials/footer.ejs') %>

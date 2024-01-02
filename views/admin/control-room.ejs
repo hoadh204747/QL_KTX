@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="xx">
+                <div>
+                    <h1>Danh sách sinh viên phòng <%= room.name %></h1>
+                </div>
+            </div>
+        
+            <div class="table-room">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>MSSV</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Quản lý</th>
+                    </tr>
+                    <% student.forEach(function(stu) { %>
+                        <tr>
+                            <td><%= stu.fullname %></td>
+                            <td><%= stu.mssv %></td>
+                            <td><%= stu.phone %></td>
+                            <td><%= stu.email %></td>
+                            <td>
+                                <form action="/room/<%= room._id %>" method="POST">
+                                    <input type="hidden" value="<%= stu._id %>" name="idSV">
+                                    <input type="hidden" value="<%= stu.id_phong %>" name="idRoom">
+                                    <button type="submit">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% } ) %>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

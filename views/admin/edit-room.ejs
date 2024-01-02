@@ -1,23 +1,30 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/nav-admin.ejs') %>
 
-<main>
-    <div class="form-wrapper">
-        <h1>Chỉnh sửa phòng</h1>
-        <form action="/edit/room/<%= room._id %>?_method=PUT" method="POST">
-            <label for="name">Tên phòng</label>
-            <input type="text" id="name" name="name" value="<%= room.name %>" required>
-            <label for="price">Giá tiền 1 tháng</label>
-            <input type="text" id="price" name="price" value="<%= room.price %>" required>
-            <label for="countMax">Số sinh viên tối đa</label>
-            <input type="text" id="countMax" name="countMax" value="<%= room.countMax %>" required>
-            <label for="gender">Giới tính</label>
-            <input type="text" id="gender" name="gender" value="<%= room.gender %>" required>
-            <button type="submit">Cập nhật</button>
-    
-        </form>
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="form-wrapper">
+                <h1>Chỉnh sửa phòng</h1>
+                <form action="/edit/room/<%= room._id %>?_method=PUT" method="POST">
+                    <label for="name">Tên phòng</label>
+                    <input type="text" id="name" name="name" value="<%= room.name %>" required>
+                    <label for="price">Giá tiền 1 tháng</label>
+                    <input type="text" id="price" name="price" value="<%= room.price %>" required>
+                    <label for="countMax">Số sinh viên tối đa</label>
+                    <input type="text" id="countMax" name="countMax" value="<%= room.countMax %>" required>
+                    <label for="gender">Giới tính</label>
+                    <input type="text" id="gender" name="gender" value="<%= room.gender %>" required>
+                    <button type="submit">Cập nhật</button>
+            
+                </form>
+            </div>
+        </main>
     </div>
-    
-</main>
+</div>
+
 
 <%- include('../partials/footer.ejs') %>

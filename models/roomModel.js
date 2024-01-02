@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 const roomSchema = new Schema({
     name: { type: String, required: true },
+    curr_count:{type:Number, default:0},
     countMax: { type: Number, required: true },
     price: { type: Number, required: true },
     gender: { type: String, require: true },
-    listSV: {
-        items: [
-            {
-                studentId: {type: Schema.Types.ObjectId, ref:'User', required: true},
-            }
-        ]
-    }
+    listBill:[
+        {idBill:{
+            type : Schema.Types.ObjectId,
+            ref: 'Bill'
+        }  }
+    ]
 })
 
 roomSchema.methods.addStudent = function (room) {

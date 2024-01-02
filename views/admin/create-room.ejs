@@ -1,18 +1,26 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/nav-admin.ejs') %>
 
-<main>
-    <div class="form-wrapper">
-        <h1>Tạo phòng</h1>
-        <form action="/admin/create-room" method="POST">
-            <input type="text" id="name" name="name" placeholder="Tên phòng" required>
-            <input type="text" id="price" name="price" placeholder="Giá tiền" required>
-            <input type="text" id="countMax" name="countMax" placeholder="Số lượng sinh viên tối đa có thể đăng ký" required>
-            <input type="text" id="gender" name="gender" placeholder="Giới tính" required>
-            <button type="submit">Tạo</button>
-    
-        </form>
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="form-wrapper">
+                <h1>Tạo phòng</h1>
+                <form action="/admin/create-room" method="POST">
+                    <input type="text" id="name" name="name" placeholder="Tên phòng" required>
+                    <input type="text" id="price" name="price" placeholder="Giá tiền" required>
+                    <input type="text" id="countMax" name="countMax" placeholder="Số lượng sinh viên tối đa có thể đăng ký" required>
+                    <input type="text" id="gender" name="gender" placeholder="Giới tính" required>
+                    <button type="submit">Tạo</button>
+            
+                </form>
+            </div>
+        </main>
     </div>
-</main>
+</div>
+
 
 <%- include('../partials/footer.ejs') %>

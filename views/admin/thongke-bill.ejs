@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <% rooms.forEach(room => { %>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <h2><%= room.name %></h2>
+                    <!-- <span onclick="displayDate()" style="color: blue; cursor: pointer; margin-left: 20px;">Xem thống kê</span> -->
+                </div>
+                    <table id="table" style="width: 100%;">
+                        <tr>
+                            <th>Năm</th>
+                            <th>Tháng</th>
+                            <th>Số điện cũ (kwh/h)</th>
+                            <th>Số điện mới (kwh/h)</th>
+                            <th>Tiêu thụ điện (kwh/h)</th>
+                            <th>Số nước cũ (m3)</th>
+                            <th>Số nước mới (m3)</th>
+                            <th>Tiêu thụ nước (m3)</th>
+                            <th>Tiền phòng(VND)/tháng</th>
+                            <th>Thành tiền(VND)</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                        <% room.listBill.forEach(bill => { %>
+                        <tr>
+                            <td><%= bill.idBill.year %></td>
+                            <td><%= bill.idBill.month %></td>
+                            <td><%= bill.idBill.old_electric %></td>
+                            <td><%= bill.idBill.new_electric %></td>
+                            <td><%= bill.idBill.new_electric - bill.idBill.old_electric %></td>
+                            <td><%= bill.idBill.old_water %></td>
+                            <td><%= bill.idBill.new_water %></td>
+                            <td><%= bill.idBill.new_water - bill.idBill.old_water %></td>
+                            <td><%= room.price %></td>
+                            <td><%= (bill.idBill.new_electric - bill.idBill.old_electric)*1500 + (bill.idBill.new_water - bill.idBill.old_water)*30000 + room.price %></td>
+                            <td>Trạng thái</td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                
+            <% }) %>
+        </main>
+    </div>
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

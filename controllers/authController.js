@@ -70,6 +70,7 @@ async function postLogin(req, res, next){
                                 res.redirect('/student/dashboard')
                             }
                             if(req.session.user.role === "admin"){
+                                req.flash('message', 'Welcome Admin comeback')
                                 res.redirect('/admin/dashboard')
                             }
                         })

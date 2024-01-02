@@ -4,12 +4,13 @@
 <main>
     <div class="xx">
         <div>
-            <h1>Danh sách phòng</h1>
+            <h2>Danh sách phòng</h2>
         </div>
+        <input type="text" id="search" placeholder="Search">
     </div>
 
     <div class="table-room">
-        <table style="width: 100%;">
+        <table id="table" style="width: 100%;">
             <tr>
                 <th>Phòng</th>
                 <th>Giá</th>
@@ -24,10 +25,21 @@
                     <td><%= room.name %></td>
                     <td><%= room.price %>k</td>
                     <td><%= room.gender %></td>
-                    <td></td>
+                    <td><%= room.curr_count %></td>
                     <td><%= room.countMax %></td>
-                    <td></td>
-                    <td>Đăng ký</td>
+                    <td>
+                        <% if(room.curr_count < room.countMax){ %>
+                            Còn chỗ
+                        <%} else{ %>
+                            Đã đầy
+                        <%} %>
+                    </td>
+                    <td>
+                        <form action="/dang-ky-phong/<%= room._id %>?_method=POST" method="POST">
+                            <input type="hidden" value="0" name="bool">
+                            <button type="submit">Đăng ký</button>
+                        </form>
+                    </td>
                 </tr>
             <% }) %>
         </table>

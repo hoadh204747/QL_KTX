@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+
+    <% if(u.id_phong_dang_ky) { %>
+        <div class="table-room">
+            <table style="width: 100%;">
+                <tr>
+                    <th>Phòng đăng ký</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+                <tr>
+                    <td><%= room.name %></td>
+                    <td>Chờ xét duyệt</td>
+                    <td>
+                        <form action="/trang-thai" method="POST">
+                            <input type="hidden" value="<%= u.id_phong_dang_ky %>" name="idPhong" >
+                            <button type="submit">
+                                Hủy đăng ký
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <% } else if(u.id_phong) { %>
+        <div class="table-room">
+            <table style="width: 100%;">
+                <tr>
+                    <th>Phòng đăng ký</th>
+                    <th>Trạng thái</th>
+                </tr>
+                <tr>
+                    <td><%= roomOld.name %></td>
+                    <td>Thành công</td>
+                </tr>
+            </table>
+        </div>
+    <% } else { %>
+        <div class="xx">
+            <div>
+                <h1>Hiện tại bạn chưa đăng ký phòng nào</h1>
+            </div>
+        </div>
+    <% } %>
+
+    
+</main>
+
+<%- include('../partials/footer.ejs') %>

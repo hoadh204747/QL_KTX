@@ -1,34 +1,41 @@
-<nav class="navbar">
+<nav class="d-flex nav justify-content-around p-3 bg-dark">
 
-    <div class="list-menu">
-      <ul>
-        <li><a href="#">Trang chủ</a></li>
-        <li>
-          <a href="#">Quản lý đăng ký</a>
-          <ul class="dropdown">
+    <div class="">
+      <ul class="nav nav-tabs">
+        <li class="nav-item "></li><a class="nav-link active" aria-current="page" href="/student/dashboard">Trang chủ</a></li>
+        <li class="nav-item dropdown-center"></li>
+          <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Quản lý đăng ký</a>
+          <ul class="dropdown-menu">
             <li><a href="/student/dang-ky">Đăng ký phòng</a></li>
-            <li><a href="#">Trạng thái đăng ký</a></li>
-            <li><a href="#">Bạn cùng phòng</a></li>
+            <li><a href="/trang-thai">Trạng thái đăng ký</a></li>
+            <li><a href="/roomate">Bạn cùng phòng</a></li>
           </ul>
         </li>
-        <li><a href="#">Cán bộ</a></li>
-        <li><a href="#">Hóa đơn</a></li>
+        <li class="nav-item"></li><a class="nav-link text-white" href="/list-manager">Cán bộ</a></li>
+        <li class="nav-item dropdown-center"></li>
+          <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Hóa đơn</a>
+          <ul class="dropdown-menu">
+            <li><a href="/hoa-don-thanh-toan">Hóa đơn thanh toán</a></li>
+            <li><a href="/hoa-don-dien-nuoc">Hóa đơn điện nước</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"></li><a class="nav-link text-white" target="_blank" href="/forum">Diễn đàn</a></li>
       </ul>
     </div>
 
-    <div class="icon-name">
+    <div class="d-flex align-items-center">
       
-      <ul>
-        <li>
-          <i class="fas fa-user"></i>
-          <ul class="dropdown">
-            <li><a style="color: #fff;" href="">Thông tin cá nhân</a></li>
+        <div class="dropdown-center">
+          <a data-bs-toggle="dropdown">
+            <img src="/images/user.png" alt="" class="avatar img-fluid rounded">
+          </a>
+          <ul class="dropdown-menu text-center">
+            <li><a href="">Thông tin cá nhân</a></li>
             <li><form action="/" method="POST">
               <button type="submit">Logout</button>
             </form></li>
           </ul>
-        </li>
-      </ul>
+        </div>
 
       
     </div> 

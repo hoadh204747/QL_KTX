@@ -1,4 +1,6 @@
 const express = require('express')
+const flash = require('connect-flash')
+const path = require('path')
 const expressLayout = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -6,7 +8,6 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session)
-const userModel = require('./models/userModel')
 const authRoute = require('./routes/authRoute')
 const adminRoute = require('./routes/adminRoute')
 const studentRoute = require('./routes/studentRoute')
@@ -16,6 +17,7 @@ const port = 3000
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 // app.use(cookieParser())
 app.use(methodOverride('_method'));
@@ -39,12 +41,16 @@ app.use((req, res, next) => {
     .catch()
 })
 
+app.use(flash())
+
+
 app.use(authRoute)
 app.use(adminRoute)
 app.use(studentRoute)
 //set view engine
 app.set('view engine', 'ejs')
 //app.set('layout', './layouts/main')
+
 
 //connect to MongoDB
 const uri = 'mongodb://localhost:27017/quanly_ktx'

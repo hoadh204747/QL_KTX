@@ -1,41 +1,51 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/nav-admin.ejs') %>
 
-<div class="search">
-    <h2>Quản lý danh sách bài đăng</h2>
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
 
-    <form action="/search" method="POST" role="search">
-        <input type="search" name="search" placeholder="Tìm kiếm...">
-    </form>
-</div>
-
-<div class="list-news">
-        <ul>
-            <% news.forEach(n => { %>
-                <li style="border-bottom: 1px solid slategrey; padding-bottom: 5px;">
-                    <div class="info">
-                        <div style="width: 400px;">
-                            <a href="">
-                                <%= n.title %>
-                            </a>
-                        </div>
-                        <div style="width: 200px;">
-                            <span><%= n.date_created.toDateString() %></span>
-                        </div>
-                    </div>
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="search">
+                <h2>Quản lý danh sách bài đăng</h2>
+            
+                <form action="/search" method="POST" role="search">
+                    <input type="search" name="search" placeholder="Tìm kiếm...">
+                </form>
+            </div>
+            
+            <div class="list-news">
+                    <ul>
+                        <% news.forEach(n => { %>
+                            <li style="border-bottom: 1px solid slategrey; padding-bottom: 5px;">
+                                <div class="info">
+                                    <div style="width: 400px;">
+                                        <a target="_blank" href="/detail-news/<%= n._id %>">
+                                            <%= n.title %>
+                                        </a>
+                                    </div>
+                                    <div style="width: 200px;">
+                                        <span><%= n.date_created.toDateString() %></span>
+                                    </div>
+                                </div>
+                                
+            
+                                <div class="btn">
+                                    <a href="/edit-news/<%= n._id %>"><button>Sửa</button></a>
+                                    <form action="/admin/list-news/<%= n._id %>?_method=DELETE" method="POST">
+                                        <input type="submit" name="" id="" value="Xóa">
+                                    </form>
+                                </div>
                     
-
-                    <div class="btn">
-                        <a href="/edit-news/<%= n._id %>"><button>Sửa</button></a>
-                        <form action="/admin/list-news/<%= n._id %>?_method=DELETE" method="POST">
-                            <input type="submit" name="" id="" value="Xóa">
-                        </form>
-                    </div>
-        
-                </li>
-                
-            <% }) %>
-        </ul> 
+                            </li>
+                            
+                        <% }) %>
+                    </ul> 
+            </div>
+        </main>
+    </div>
 </div>
+
 
 <%- include('../partials/footer.ejs') %>

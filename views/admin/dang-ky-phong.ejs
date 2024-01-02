@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <% if(user.length > 0) { %>
+                <div class="table-room">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Sinh viên</th>
+                        <th>Phòng đăng ký</th>
+                        <th>Xử lý</th>
+                    </tr>
+                    <% user.forEach(u =>{ %>
+                        <tr>
+                            <td><%= u.fullname %></td>
+                            <td><%= u.id_phong_dang_ky.name %></td>
+                            <td>
+                                <form action="/xac-nhan-dang-ky" method="POST">
+                                    <input type="hidden" value="<%= u._id %>" name="idSinhVien">
+                                    <input type="hidden" value="<%= u.id_phong_dang_ky._id %>" name="idPhong">
+                                    <button type="submit">Duyệt</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%}) %>
+                </table>
+                </div>
+            <% } else { %>
+                <div class="xx">
+                    <div>
+                        <h3>Hiện tại chưa có yêu cầu nào đăng ký phòng từ sinh viên</h3>
+                    </div>
+                </div>
+            <%} %>
+        </main>
+    </div>
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

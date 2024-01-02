@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/nav.ejs') %>
 
-    <main>
+    <main style="height: 800px;">
         <div class="header-dashboard xx">
             <div>
                 <h1>Bảng điều khiển tài khoản sinh viên</h1>
@@ -12,7 +12,7 @@
             <div class="event">
                 <ul>
                     <% news.forEach(n => { %>
-                        <li><a href="/detail-news/<%= n._id %>"><%= n.title %></a></li>
+                        <li><a target="_blank" href="/detail-news/<%= n._id %>"><%= n.title %></a></li>
                     <% }) %>
                 </ul>
             </div>
@@ -29,5 +29,7 @@
             </div>
         </div>
     </main>
+
+
 
 <%- include('../partials/footer.ejs') %>

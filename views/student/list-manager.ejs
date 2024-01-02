@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+    <div class="xx">
+        <div>
+            <h3>Danh sách cán bộ quản lý KTX</h3>
+        </div>
+        <input type="text" id="search" placeholder="Search">
+    </div>
+    <div id="table" class="table-room">
+        <table style="width: 100%;">
+            <tr>
+                <th>Họ tên</th>
+                <th>Email</th>
+            </tr>
+            <% user.forEach(function(u) { %>
+                <tr>
+                    <td><%= u.fullname %></td>
+                    <td><%= u.email %></td>
+                </tr>
+            <% } ) %>
+        </table>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs') %>

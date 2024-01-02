@@ -1,10 +1,42 @@
-<footer id="footer">
-    <div class="contact">
-        <h3>Copyrigt Do Huy Hoa</h3>
-        <p>Email: Hoa.dh204747@sis.hust.edu.vn</p>
-        <p>Phone: 0963287067</p>
-    </div>
-</footer>
 
+
+<!-- <script>
+    var y = document.getElementById("table");
+
+    function displayDate() {
+    if (y.style.display === "none") {
+        y.style.display = "block";
+    } else {
+        y.style.display = "none";
+    }
+    }
+</script> -->
+
+<script>
+    //sidebarToggle
+    const sidebarToggle = document.querySelector("#sidebar-toggle")
+    sidebarToggle.addEventListener("click", function(){
+        document.querySelector("#sidebar").classList.toggle("collapsed");
+    })
+
+
+    let theEditor;
+    ClassicEditor.create(document.querySelector( '#content'), {
+        
+    })
+    .then((editor) => {
+        theEditor = editor;
+    })
+    .catch( error => {
+        console.error( error );
+    });
+
+    function getDataFromTheEditor(){
+        return theEditor.getData();
+    }
+    var blog = getDataFromTheEditor();
+</script>
+<script src="/handle.js"></script>
 </body>
+
 </html>

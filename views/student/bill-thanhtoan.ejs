@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+    <div class="xx">
+        <div>
+            <h2>Hóa đơn thanh toán</h2>
+        </div>
+        <input type="text" id="search" placeholder="Search">
+    </div>
+    <table id="table" style="width: 100%;">
+        <tr>
+            <th>Phòng</th>
+            <th>Năm</th>
+            <th>Tháng</th>
+            <th>Tiền điện(VND)</th>
+            <th>Tiền nước(VND)</th>
+            <th>Tiền phòng(VND)</th>
+            <th>Tổng(VND)</th>
+        </tr>
+        <% bill.id_phong.listBill.forEach(b => { %>
+            <tr>
+                <td><%= bill.id_phong.name %></td>
+                <td><%= b.idBill.year %></td>
+                <td><%= b.idBill.month %></td>
+                <td><%= (b.idBill.new_electric - b.idBill.old_electric)*1500 %></td>
+                <td><%= (b.idBill.new_water - b.idBill.old_water)*30000 %></td>
+                <td><%= bill.id_phong.price %></td>
+                <td><%= (b.idBill.new_electric - b.idBill.old_electric)*1500 + (b.idBill.new_water - b.idBill.old_water)*30000 + bill.id_phong.price %></td>
+            </tr>
+        <% }) %>
+        
+    </table>
+</main>
+
+<%- include('../partials/footer.ejs') %>

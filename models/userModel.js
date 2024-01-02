@@ -16,14 +16,26 @@ const userSchema = new Schema({
     },
     phone:{
         type: String,
-        require: true
+        // require: true
     },
     mssv:{
         type: Number,
-        require: true
+        // require: true
     },
     role:{
         type: String,
+    },
+    id_phong:{
+        type: Schema.Types.ObjectId,
+        ref:'Room'
+    },
+    id_phong_dang_ky:{
+        type: Schema.Types.ObjectId,
+        ref:'Room',
+    },
+    bool: {
+        type: Number,
+        // default:0,
     }
 })
 
