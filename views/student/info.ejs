@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<div class="form-wrapper">
+
+    <% if(update) { %>
+        <div class="flash-message">
+            <span style="font-size: 12px;"><%= update %></span>
+        </div>
+    <% } %>
+
+    <h1>Thông tin cá nhân</h1>
+    <form action="/thong-tin-ca-nhan?_method=PUT" method="POST">
+        <input type="hidden">
+
+        <label for="name">Tên</label>
+        <input type="text" id="fullname" name="fullname" value="<%= infoUser.fullname %>" required>
+
+        <label for="">Mã số sinh viên</label>
+        <input type="text" id="mssv" name="mssv" value="<%= infoUser.mssv %>" required>
+
+        <label for="">Số điện thoại</label>
+        <input type="text" id="phone" name="phone" value="<%= infoUser.phone %>"" required>
+
+        <label for="">Email đăng ký</label>
+        <input type="text" id="email" name="email" value="<%= infoUser.email %>" required>
+        <button type="submit">Cập nhật</button>
+
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

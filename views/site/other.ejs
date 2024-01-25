@@ -1,4 +1,4 @@
-<%- include('./partials/header.ejs') %>
+<%- include('../partials/header.ejs') %>
 
 <main style="background-color: black;">
     <div class="row">
@@ -34,13 +34,13 @@
             </div>
 
             <div style="display: flex; justify-content: space-around;" class="sort">
+                <a href="/forum">Tất cả</a>
                 <a href="/forum/dien-nuoc-vesinh">Điện, nước, vệ sinh</a>
                 <a href="/forum/an-ninh-trat-tu">An ninh trật tự</a>
                 <a href="/forum/other">Dịch vụ khác</a>
-                <a href="/forum">Tất cả</a>
             </div>
 
-                <% ratings.forEach(r => { %>
+                <% rating3.forEach(r => { %>
                     <div  class="user-cmt">
                         <div class="avt-cmt">
                             <img width="100%" src="/images/user.png" alt="">
@@ -67,4 +67,4 @@
     </div>
 </main>
 
-<%- include('./partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

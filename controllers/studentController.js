@@ -4,10 +4,25 @@ const News = require('../models/newsModel')
 const Rating = require('../models/ratingModel')
 
 class StudentController{
+
+    async getInfoUser(req,res){
+        const infoUser = await User.findById(req.user._id)
+        const update = req.flash('update')[0]
+        res.render('student/info', {infoUser, update})
+    }
+
+    async updateInfoUser(req,res){
+        const newUser = await User.updateOne({_id:req.user._id}, req.body)
+        req.flash('update', 'Cập nhật thành công')
+        res.redirect('back')
+    }
+
     async getAllRooms(req,res){
         const rooms = await Room.find({});
         const user = await User.findById(req.user._id);
-        res.render('student/dang-ky', {rooms, user})
+        const message1 = req.flash('message1')[0]
+        const message2 = req.flash('message2')[0]
+        res.render('student/dang-ky', {rooms, user,message1, message2})
     }
 
     async dashboard(req,res){
@@ -26,7 +41,6 @@ class StudentController{
         const id_phong_dang_ky = req.params.id;
         const idSinhVien = req.user._id;
         const {bool} = req.body;
-        console.log(req.body)
         try {
             if (!idSinhVien) {
                 return res.status(401).json({ success: false, message: 'Vui lòng đăng nhập trước khi đăng ký phòng' });
@@ -36,21 +50,29 @@ class StudentController{
 
             if (sinhVien.id_phong_dang_ky) {
                 // return res.status(400).json({ success: false, message: 'Đã gửi yêu cầu đăng ký, vui lòng chờ xác nhận' });
+                req.flash('message1', "Không thành công vì bạn đang có một yêu cầu đang chờ xủ lý")
                 return res.redirect('back')
             }
     
             if (sinhVien.id_phong) {
                 // return res.status(400).json({ success: false, message: 'Không thể đăng ký thêm được vì sinh viên đã đăng ký thành công' });
+                req.flash('message2', "Không thể đăng ký thêm được vì sinh viên đã đăng ký thành công")
                 return res.redirect('back')
             }
+
+            if(!sinhVien.id_phong && !sinhVien.id_phong_dang_ky){
+                
+                const updatedSinhVien = await User.findByIdAndUpdate(
+                    idSinhVien,
+                    { $set: { id_phong_dang_ky, bool } },
+                    { new: true },
+                )
+                    .then((result) => {
+                        res.redirect('/trang-thai');
+                    })
+            }
     
-            const updatedSinhVien = await User.findByIdAndUpdate(
-                idSinhVien,
-                { $set: { id_phong_dang_ky, bool } },
-                { new: true },
-            );
-    
-            res.json({ success: true, sinhVien: updatedSinhVien });
+            
         } catch (error) {
             res.status(500).json({ success: false, error: error.message });
         }
@@ -60,7 +82,8 @@ class StudentController{
         const u = await User.findById(req.user._id)
         const room = await Room.findById(req.user.id_phong_dang_ky)
         const roomOld = await Room.findById(req.user.id_phong)
-        res.render('student/trang-thai', {u, room, roomOld})
+        const huydangky = req.flash('huydangky')[0]
+        res.render('student/trang-thai', {u, room, roomOld, huydangky})
     }
 
     async trang_thai(req, res){
@@ -71,6 +94,7 @@ class StudentController{
 
         await User.findByIdAndUpdate(idSinhVien, {id_phong_dang_ky:null})
         // return res.status(200).json({message: 'Đã hủy đăng ký thành công'})
+        req.flash('huydangky', 'Đã hủy đăng ký thành công')
         return res.redirect('back')
     }
 
@@ -106,9 +130,26 @@ class StudentController{
     }
     async forum(req,res){
         const user = await User.findOne({role:req.session.user.role})
-        const ratings = await Rating.find()
+        const ratings = await Rating.find().sort({createdAt : -1})
         res.render('forum', {ratings, user})
     }
+
+    async topicTTAN(req,res){
+        const user = await User.findOne({role:req.session.user.role})
+        const rating1 = await Rating.find({topic: 'Trật tự an ninh'}).sort({createdAt: -1})
+        res.render('site/ttan', {rating1, user})
+    }
+    async topicDNWC(req,res){
+        const user = await User.findOne({role:req.session.user.role})
+        const rating2 = await Rating.find({topic: 'Điện, nước, vệ sinh'}).sort({createdAt: -1})
+        res.render('site/dnwc', {rating2, user})
+    }
+    async topicOTHER(req,res){
+        const user = await User.findOne({role:req.session.user.role})
+        const rating3 = await Rating.find({topic: 'Dịch vụ khác'}).sort({createdAt: -1})
+        res.render('site/other', {rating3, user})
+    }
+
     async postRating(req,res,next){
         
         const rating = new Rating({

@@ -1,6 +1,20 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/nav.ejs') %>
 
+<% if(message2) { %>
+    <div class="flash-message">
+        <span style="font-size: 12px;"><%= message2 %></span>
+    </div>
+<% } %>
+
+<% if(message1) { %>
+    <div class="flash-message">
+        <span style="font-size: 12px;"><%= message1 %></span>
+    </div>
+<% } %>
+
+
+
 <main>
     <div class="xx">
         <div>
@@ -37,7 +51,7 @@
                     <td>
                         <form action="/dang-ky-phong/<%= room._id %>?_method=POST" method="POST">
                             <input type="hidden" value="0" name="bool">
-                            <button type="submit">Đăng ký</button>
+                            <button style="border: none; border-radius: 5px; background-color: aqua; padding: 3px;" type="submit">Đăng ký</button>
                         </form>
                     </td>
                 </tr>

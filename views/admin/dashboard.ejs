@@ -12,9 +12,9 @@
                 <div id="bar" style="width:100%;max-width:500px;"></div>
             </div>
             <div class="d-flex justify-content-around p-2  mb-3 mt-5">
-                <div style="box-shadow: 5px 10px 18px rgb(60, 82, 193); border: 0px solid;" class="p-5 bg-info"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= sv %> Sinh viên</span></div>
-                <div style="box-shadow: 5px 10px 18px rgb(211, 133, 73); border: 0px solid;" class="p-5 bg-warning"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= ad %> Cán bộ</span></div>
-                <div style="box-shadow: 5px 10px 18px rgb(166, 90, 213); border: 0px solid;" class="p-5 bg-primary"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><%= r %> Phòng</span></div>
+                <div style="box-shadow: 5px 10px 18px rgb(60, 82, 193); border: 0px solid;" class="p-5 bg-info"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><a href="/list-sv"><%= sv %> Sinh viên</a></span></div>
+                <div style="box-shadow: 5px 10px 18px rgb(211, 133, 73); border: 0px solid;" class="p-5 bg-warning"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><a href="/list-manager"><%= ad %> Cán bộ</a></span></div>
+                <div style="box-shadow: 5px 10px 18px rgb(166, 90, 213); border: 0px solid;" class="p-5 bg-primary"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: italic; font-size: 1.5rem;"><a href="/rooms"><%= r %> Phòng</a></span></div>
               </div>
             
         </main>
@@ -35,7 +35,7 @@
         paper_bgcolor: "#ccc",
         plot_bgcolor: "#ccc",
         yaxis: {
-        tickvals: [2, 4, 6, 8],  // Vị trí của các đơn vị trên trục y
+        tickvals: [2, 4, 6, 8],  // Vị.getAllRooms) của các đơn vị trên trục y
         ticktext: ["2", "4", "6", "8"]  // Nhãn tương ứng với các đơn vị
   }
     };
@@ -53,7 +53,6 @@
 </script>
 
 <script>
-    window.alert('<%= message %>')
 </script>
 
 <%- include('../partials/footer.ejs') %>

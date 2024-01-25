@@ -7,6 +7,13 @@
     <title>Form Đăng Ký</title>
 </head>
 <body>
+
+    <% if(register) { %>
+        <div class="flash-message">
+            <span style="font-size: 12px;"><%= register %></span>
+        </div>
+    <% } %>
+
     <div class="wrapper">
         <h1>Sign Up</h1>
         <form action="/register" method="POST">

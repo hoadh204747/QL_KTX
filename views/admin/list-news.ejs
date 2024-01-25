@@ -10,9 +10,7 @@
             <div class="search">
                 <h2>Quản lý danh sách bài đăng</h2>
             
-                <form action="/search" method="POST" role="search">
-                    <input type="search" name="search" placeholder="Tìm kiếm...">
-                </form>
+                <input style="height: 40px; width: 300px; border-radius: 5px;" type="text" id="search" placeholder="Search">
             </div>
             
             <div class="list-news">
@@ -32,9 +30,9 @@
                                 
             
                                 <div class="btn">
-                                    <a href="/edit-news/<%= n._id %>"><button>Sửa</button></a>
+                                    <a href="/edit-news/<%= n._id %>"><button style="margin-right: 15px; border: solid 1px; padding: 3px; background-color: aqua;">Sửa</button></a>
                                     <form action="/admin/list-news/<%= n._id %>?_method=DELETE" method="POST">
-                                        <input type="submit" name="" id="" value="Xóa">
+                                        <input onclick="return confirm('Are you sure?');" style="background-color: coral; padding: 2px; border: solid 1px;" type="submit" name="" id="" value="Xóa">
                                     </form>
                                 </div>
                     
@@ -47,5 +45,20 @@
     </div>
 </div>
 
+<script>
+    const search = document.querySelector('#search')
+    search.addEventListener('input', function(e){
+        const filter= e.target.value.toLowerCase();
+        const item = document.querySelectorAll('.list-news li')
+        item.forEach( i => {
+            let text = i.textContent.toLowerCase();
+            if(text.includes(filter.toLowerCase())){
+                i.style.display = '';
+            } else {
+                i.style.display = 'none';
+            }
+        })
+    })
+</script>
 
 <%- include('../partials/footer.ejs') %>

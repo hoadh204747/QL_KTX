@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="reset-password">
+        <h1>Nhập mật khẩu mới</h1>
+    <form class="login-form" action="/set-new-password" method="POST">
+        <div class="form-group">
+            <label for="password">Mật khẩu mới</label>
+            <input type="password" class="form-control form-auth" id="password" name="password">
+        </div>
+        <input type="hidden" name="userId" value="<%= userId %>">
+        <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
+
+        <button type="submit" class="btn btn-primary">Đồng ý</button>
+    </form>
+    </div>
+
+    <style>
+        body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .reset-password {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reset-password h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 8px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+    </style>
+</body>
+</html>

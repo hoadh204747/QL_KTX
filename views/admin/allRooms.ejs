@@ -41,7 +41,7 @@
                             
                                 <td><a href="/edit/room/<%= room._id %>" ><button style="padding: 5px; border: none; background-color: rgb(80, 255, 144); border-radius: 5px;">Sửa</button></a></td>
                                 <td><form action="/room/<%= room._id %>?_method=DELETE" method="POST">
-                                    <input style="padding: 5px; border: none; background-color: rgb(255, 238, 80); border-radius: 5px;" type="submit" value="Xóa"/>
+                                    <input onclick="return confirm('Are you sure?');" style="padding: 5px; border: none; background-color: rgb(255, 238, 80); border-radius: 5px;" type="submit" value="Xóa"/>
                                 </form></td>
                             
                         </tr>
@@ -53,5 +53,25 @@
     </div>
 </div>
 
+<script>
+    document.querySelector('#search').addEventListener('input', handleSearch)
+function handleSearch(){
+    let filter = document.getElementById('search').value.toLowerCase();
+    let table = document.getElementById('table');
+    let tr = table.getElementsByTagName('tr');
+    for(var i = 0; i<tr.length; i++){   
+        let td = tr[i].getElementsByTagName('td')[0];
+        if(td){
+            let textValue = td.textContent || td.innerHTML;
+
+            if(textValue.toLowerCase().includes(filter)){
+                tr[i].style.display = ""
+            } else {
+                tr[i].style.display = "none"
+            }
+        }
+    }
+}
+</script>
 
 <%- include('../partials/footer.ejs') %>

@@ -3,6 +3,9 @@ const router = express.Router();
 const studentController = require('../controllers/studentController')
 const isAuthStudent = require('../middlewares/is-auth-student')
 
+router.get('/thong-tin-ca-nhan', studentController.getInfoUser)
+router.put('/thong-tin-ca-nhan', studentController.updateInfoUser)
+
 router.get('/student/dashboard', studentController.dashboard)
 router.get('/student/dang-ky', studentController.getAllRooms)
 
@@ -23,5 +26,9 @@ router.get('/hoa-don-thanh-toan', studentController.billThanhToan)
 router.get('/forum', studentController.forum)
 router.post('/forum', studentController.postRating)
 router.delete('/forum/:id', studentController.deleteCmt)
+
+router.get('/forum/an-ninh-trat-tu', studentController.topicTTAN)
+router.get('/forum/dien-nuoc-vesinh', studentController.topicDNWC)
+router.get('/forum/other', studentController.topicOTHER)
 
 module.exports = router;

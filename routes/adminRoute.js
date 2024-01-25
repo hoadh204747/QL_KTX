@@ -35,4 +35,6 @@ router.get('/create-bill', adminController.getCreateBill)
 router.post('/create-bill', adminController.postBill)
 router.get('/thongke-bill', adminController.thongkeBill)
 
+router.get('/list-sv', adminController.getListSV)
+
 module.exports = router;

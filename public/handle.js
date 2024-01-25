@@ -1,5 +1,18 @@
-document.querySelector('#search').addEventListener('input', handleSearch)
+const search = document.forms['searchPost'].querySelector('input');
+    search.addEventListener('keyup', function(e){
+        const term = e.target.value.toLowerCase();
+        const books = list.getElementsByTagName('li');
+        for(let i=0; i<books.length; i++){
+            const title = books[i].textContent.toLowerCase();
+            if(title.indexOf(term) != -1){
+                books[i].style.display = 'block';
+            } else {
+                books[i].style.display = 'none';
+            }
+        }
+    })
 
+document.querySelector('#search').addEventListener('input', handleSearch)
 function handleSearch(){
     let filter = document.getElementById('search').value.toLowerCase();
     let table = document.getElementById('table');

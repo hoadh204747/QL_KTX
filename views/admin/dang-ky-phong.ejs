@@ -6,6 +6,13 @@
         <%- include('../partials/x-admin.ejs') %>
 
         <main class="content px-3 py-2">
+
+            <% if(duyet) { %>
+                <div class="flash-message">
+                    <span style="font-size: 12px;"><%= duyet %></span>
+                </div>
+            <% } %>
+
             <!-- <div class="container-fluid"></div> -->
             <% if(user.length > 0) { %>
                 <div class="table-room">

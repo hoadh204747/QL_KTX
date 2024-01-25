@@ -1,0 +1,59 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="wrapper-dashboard">
+    <%- include('../partials/nav-admin.ejs') %>
+    <div class="main">
+        <%- include('../partials/x-admin.ejs') %>
+
+        <main class="content px-3 py-2">
+            <!-- <div class="container-fluid"></div> -->
+            <div class="xx">
+                <div>
+                    <h2>Danh sách sinh viên</h2>
+                </div>
+                <input type="text" id="search" placeholder="Search">
+            </div>
+        
+            <div id="table" class="table-room">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>MSSV</th>
+                    </tr>
+                    <% users.forEach(function(room) { %>
+                        <tr>
+                            <td><%= room.fullname %></td>
+                            <td><%= room.email %></td>
+                            <td><%= room.mssv %></td>
+                            
+                    <% }) %>
+                    
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    document.querySelector('#search').addEventListener('input', handleSearch)
+function handleSearch(){
+    let filter = document.getElementById('search').value.toLowerCase();
+    let table = document.getElementById('table');
+    let tr = table.getElementsByTagName('tr');
+    for(var i = 0; i<tr.length; i++){   
+        let td = tr[i].getElementsByTagName('td')[0];
+        if(td){
+            let textValue = td.textContent || td.innerHTML;
+
+            if(textValue.toLowerCase().includes(filter)){
+                tr[i].style.display = ""
+            } else {
+                tr[i].style.display = "none"
+            }
+        }
+    }
+}
+</script>
+
+<%- include('../partials/footer.ejs') %>

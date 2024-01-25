@@ -1,6 +1,7 @@
 const express = require('express')
 const flash = require('connect-flash')
 const path = require('path')
+const env = require('dotenv')
 const expressLayout = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -29,6 +30,9 @@ const store = new MongoDBStore({
 })
 
 app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false, store: store }))
+
+
+
 app.use((req, res, next) => {
   if (!req.session.user) {
     return next()
@@ -37,6 +41,24 @@ app.use((req, res, next) => {
     .then(user => {
       req.user = user;
       next()
+    })
+    .catch()
+})
+
+app.use((req,res,next) => {
+  if (!req.session.user) {
+    return next()
+  }
+  res.locals.username = req.user.fullname
+  next()
+})
+
+app.use((req,res,next) => {
+  User
+    .countDocuments({bool:0})
+    .then(resual => {
+      res.locals.notifice = resual;
+      next();
     })
     .catch()
 })

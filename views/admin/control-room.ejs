@@ -32,7 +32,7 @@
                                 <form action="/room/<%= room._id %>" method="POST">
                                     <input type="hidden" value="<%= stu._id %>" name="idSV">
                                     <input type="hidden" value="<%= stu.id_phong %>" name="idRoom">
-                                    <button type="submit">Xóa</button>
+                                    <button type="submit" onclick="return confirm('Are you sure?');">Xóa</button>
                                 </form>
                             </td>
                         </tr>

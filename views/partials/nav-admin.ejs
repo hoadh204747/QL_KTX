@@ -17,6 +17,11 @@
               <a href="/xac-nhan-dang-ky" class="sidebar-link">
                   <i class="fa-solid fa-bell pe-2"></i>
                   Yêu cầu đăng ký phòng
+                  <% if(notifice > 0) { %>
+                    <span style="color: chartreuse;">
+                        (<%= notifice %>)
+                    </span>
+                  <% } %>
               </a>
           </li>
           <li class="sidebar-item">

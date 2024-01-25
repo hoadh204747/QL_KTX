@@ -6,20 +6,22 @@
         <%- include('../partials/x-admin.ejs') %>
 
         <main class="content px-3 py-2">
-            <!-- <div class="container-fluid"></div> -->
-            <h1>Tạo thông báo</h1>
+            <div class="d-flex justify-content-center mt-3 mb-3">
+                <h1>Tạo thông báo</h1>
+            </div>
+            
 
             <form action="/post-news" method="POST">
 
                 <label for="title"><b>Tiêu đề</b></label>
                 <br>
-                <input style="width: 90%; margin: 10px 40px;" type="text" placeholder="Nhập tiêu đề" name="title" value="">
+                <input style="width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 40px;" type="text" placeholder="Nhập tiêu đề" name="title" value="">
                 <br>
-                <label for="content"><b>Nội dung</b></label>
+                <label style="margin-bottom: 10px;" for="content"><b>Nội dung</b></label>
                 <textarea id="content" name="content" cols="50" rows="10"></textarea>
                 <br>
             
-                <button type="submit">Đăng</button>
+                <button style="padding: 5px; border: none; border-radius: 5px; background-color: aquamarine; width: 60px;" type="submit">Đăng</button>
             
             </form>
         </main>

@@ -3,6 +3,12 @@
 
 <main>
 
+    <% if(huydangky) { %>
+        <div class="flash-message">
+            <span style="font-size: 12px;"><%= huydangky %></span>
+        </div>
+    <% } %>
+
     <% if(u.id_phong_dang_ky) { %>
         <div class="table-room">
             <table style="width: 100%;">

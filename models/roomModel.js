@@ -15,22 +15,4 @@ const roomSchema = new Schema({
     ]
 })
 
-roomSchema.methods.addStudent = function (room) {
-    const index = this.listSV.findIndex((i) => {
-        return i.id.toString() === room._id.toString();
-    })
-
-    const updateListSV = [...this.listSV];
-
-    if(index >= 0){
-
-    }
-    else{
-        updateListSV.push({
-            id: room._id
-        });
-    }
-    this.listSV = updateListSV;
-}
-
 module.exports = mongoose.model('Room', roomSchema)

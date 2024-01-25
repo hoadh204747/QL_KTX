@@ -22,7 +22,6 @@ class AdminController {
         const ad = (await User.find({role: 'admin'})).length
         const r = (await Room.find()).length
         const message = req.flash('message')[0]
-        console.log(message)
         res.render('admin/dashboard', {a,b,c,d,e,sv,ad,r, message})
     }
 
@@ -114,12 +113,13 @@ class AdminController {
 
     async getXac_nhan_dang_ky(req,res){
         const user = await User.find({bool:0}).populate('id_phong_dang_ky').exec();
+        const duyet = req.flash('duyet')[0]
         // user.forEach(u => {
         //     console.log(u.id_phong_dang_ky.name)
             
         // })
         // console.log(user)
-        res.render('admin/dang-ky-phong', {user})
+        res.render('admin/dang-ky-phong', {user, duyet})
     }
 
 
@@ -139,6 +139,7 @@ class AdminController {
             if (phong.curr_count < phong.countMax) {
                 await Room.findByIdAndUpdate(idPhong, { $inc: { curr_count: 1 } });
                 await User.findByIdAndUpdate(idSinhVien, { id_phong: idPhong, id_phong_dang_ky:null, bool: 1 });
+                req.flash('duyet', 'Thành công')    
                 return res.redirect('back')
                 // return res.status(200).json({ message: 'Đăng ký phòng thành công' });
             } else {
@@ -193,7 +194,12 @@ class AdminController {
         // })
         res.render('admin/thongke-bill', {rooms})
     }
- 
+    
+    async getListSV(req,res){
+        const users = await User.find({role:'member'})
+        console.log(URLSearchParams)
+        res.render('admin/list-sv',{users})
+    }
 }
 
 module.exports = new AdminController()

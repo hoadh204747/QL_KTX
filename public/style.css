@@ -10,6 +10,29 @@ li{
     list-style-type: none;
 }
 
+.flash-message{
+    margin: auto;
+    width: 350px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: aqua;
+    text-align: center;
+    animation: message ease 1s, fadaOut linear 1s 1.5s forwards;   
+}
+@keyframes message{
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes fadaOut{
+    to {
+        display: none;
+    }
+}
+
 /* nav-user */
 
 
@@ -221,7 +244,7 @@ li{
 }
 
 .event a{
-    font-size: 24px;
+    font-size: 20px;
     color: rgb(17, 1, 1);
     font-style: italic;
     font-family: Arial, Helvetica, sans-serif;
@@ -234,7 +257,7 @@ li{
     position: absolute;
     top:50px;
     right: 30px;
-    height: 550px;
+    height: 500px;
     width: 35%;
     display: flex;
     flex-direction: column;
@@ -474,6 +497,7 @@ a.sidebar-link{
     width: 100%;
     height: auto;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 .user-cmt button{
     border: none;
@@ -507,3 +531,20 @@ a.sidebar-link{
     height: auto;
     margin: 0px 0 30px;
 }
+
+.sort{
+    border-bottom: solid 1px;
+}
+
+.sort a{
+    padding: 2px;
+    margin-bottom: 20px;
+    background-color: aquamarine;
+    border-radius: 5px;
+}
+.sort a:hover{
+    background-color: lightgreen;
+    scale: 1.1;
+}
+
+/**/
